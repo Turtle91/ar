@@ -37,8 +37,8 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
-    ShowFOV = true,
-    FOV = 15,
+    ShowFOV = false,
+    FOV = 13,
     FOVSides = 12,
     FOVColour = Color3fromRGB(231, 84, 128),
 
@@ -433,6 +433,13 @@ Heartbeat:Connect(function()
     Aiming.UpdateFOV()
     Aiming.GetClosestPlayerToCursor()
 end)
-
+-- //
+UIS.InputBegan:Connect(function(input, processed)
+                                if (input.KeyCode == Enum.KeyCode.Y and processed == false) then
+                            
+                                    if Aiming.Enabled == true then
+                                        Aiming.Enabled = false
+                                        else
+                                            Aiming.Enabled = true
 -- //
 return Aiming
